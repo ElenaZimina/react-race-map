@@ -1,0 +1,20 @@
+.wh-body-content {
+  padding: 0;
+}
+
+.content-footer--fixed {
+  width: 100%;
+  position: fixed;
+  background: #fff;
+  bottom: 0;
+  padding: 24px 15px;
+  font-size: 16px;
+  color: #349ACC;
+  border-top: 1px solid #CCD2D7;
+  z-index: 4;
+}
+
+.page-container {
+  width: 100%;
+  min-width: 290px;
+}
