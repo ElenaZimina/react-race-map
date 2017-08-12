@@ -1,0 +1,14 @@
+$lightGreen: #DAF7A6;
+
+.map-container {
+  padding: 0 30px;
+  z-index: 100;
+}
+
+.leaflet-container {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  cursor: auto;
+}

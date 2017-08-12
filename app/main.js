@@ -1,23 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { syncHistoryWithStore } from 'react-router-redux'
-import { Router, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 
-import configureRoutes from './routes'
 import configureStore from './redux/configureStore'
 import DevTools from './redux/DevTools'
+import AppLayout from './views/AppLayout';
 
-const store = configureStore(window.__INITIAL_STATE__);
-const history = syncHistoryWithStore(browserHistory, store);
-const routes = configureRoutes(store, history);
+const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
     <div>
-      <Router history={history}>
-        {routes}
-      </Router>
+      <AppLayout />
       {__DEBUG__ && <DevTools />}
     </div>
   </Provider>,

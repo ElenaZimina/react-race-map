@@ -1,10 +1,7 @@
-require('axios');
 require('classnames');
 require('react');
 require('react-dom');
 require('react-redux');
-require('react-router');
-require('react-router-redux');
 require('redux');
 require('redux-actions');
 require('redux-promise-middleware');

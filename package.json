@@ -1,5 +1,5 @@
 {
-  "name": "react-sport-map",
+  "name": "react-race-map",
   "version": "1.0.0",
   "description": "",
   "engines": {
@@ -18,26 +18,21 @@
     "url": "https://github.com/ElenaZimina/react-sport-map.git"
   },
   "keywords": [
-    "react",
-    "starter"
+    "react", "race", "map"
   ],
   "author": "Elena Zimina",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.16.1",
     "classnames": "^2.2.5",
     "create-react-class": "^15.5.3",
     "history": "^4.6.1",
     "leaflet": "^1.2.0",
-    "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-addons-shallow-compare": "^15.5.2",
     "react-dom": "^15.5.4",
     "react-leaflet": "^1.5.0",
     "react-redux": "^5.0.4",
-    "react-router": "^2.4.1",
-    "react-router-redux": "^4.0.5",
     "redux": "^3.6.0",
     "redux-actions": "^2.0.3",
     "redux-promise-middleware": "^4.2.0",
@@ -87,7 +82,6 @@
     "style-loader": "^0.17.0",
     "url-loader": "^0.5.8",
     "webpack": "^2.5.1",
-    "webpack-dev-server": "^2.4.5",
-    "yargs": "^7.0.2"
+    "webpack-dev-server": "^2.4.5"
   }
 }

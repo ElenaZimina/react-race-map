@@ -1,0 +1,96 @@
+.toolbar {
+  width: 300px;
+  height: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  margin-right: 13%;
+
+  &__title {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    font-family: Roboto;
+  }
+}
+
+.facility {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 8px 20px;
+  font-family: Roboto;
+  font-size: 13px;
+
+  &:hover .tool-icon__container {
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.4);
+    transition: 0.3s linear all;
+  }
+}
+
+.tool-icon {
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  background-position: 50% 50%;
+
+  &__container {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: 0.3s linear all;
+
+    &--active {
+      box-sizing: border-box;
+      animation: active-tool 1.3s ease-in infinite;
+    }
+  }
+}
+
+@keyframes active-tool {
+  0% {
+    background-color: #4DBCB6;
+  }
+
+  50% {
+    background-color: white;
+  }
+
+  100% {
+    background-color: #4DBCB6;
+  }
+}
+
+.icon {
+  &-water {
+    background-image: url('../images/water.svg');
+  }
+
+  &-finish {
+    background-image: url('../images/finish.svg');
+  }
+
+  &-start {
+    background-image: url('../images/start.svg');
+  }
+
+  &-medicine {
+    background-image: url('../images/medicine.svg');
+  }
+
+  &-meals {
+    background-image: url('../images/meals.svg');
+  }
+}
+
+.cursor-icon {
+  position: absolute;
+  background-size: cover;
+  background-position: 50% 50%;
+  width: 30px;
+  height: 30px;
+  z-index: 300;
+}

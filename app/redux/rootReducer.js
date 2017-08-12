@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux'
-import { routerReducer as routing } from 'react-router-redux'
-
-import recipes from './modules/recipes';
+import map from './modules/map';
+import tools from './modules/tools';
 
 export default combineReducers({
-  routing,
-  recipes
+  map,
+  tools
 })

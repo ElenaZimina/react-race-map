@@ -3,32 +3,39 @@ import PropTypes from 'prop-types'
 import connectWrapper from '../redux/utils/connect'
 import actions from '../redux/rootActions'
 import { Header } from '../components/layout/Header'
+import MapContainer from '../components/MapContainer'
+import Toolbar from '../components/toolbar/Toolbar'
+
+import '../styles/main.scss'
 
 export class AppLayout extends React.Component {
-  static contextTypes = {
-    router: React.PropTypes.object
-  };
 
   static propTypes = {
-    history: PropTypes.object.isRequired,
-    children: PropTypes.element,
     state: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired
   };
 
-  componentWillMount() {
-    // this.redirectIfNotLoggedIn();
-  }
-
-  componentDidUpdate() {
-    // this.redirectIfNotLoggedIn();
-  }
-
   render () {
+    const {state, actions} = this.props;
+    
     return (
-      <div className='app-content'>
+      <div className='page-container'>
         <Header />
-        {this.props.children}
+  
+        <div className='page-content'>
+        
+          <MapContainer
+            map={state.map}
+            activeTool={state.tools.entities[state.tools.activeId]}
+            onAddMarker={actions.addMarker}
+          />
+          
+          <Toolbar
+            tools={state.tools}
+            onSetActiveTool={actions.setActiveTool}
+          />
+          
+        </div>
       </div>
     )
   }
