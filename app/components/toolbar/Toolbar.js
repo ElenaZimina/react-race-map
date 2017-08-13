@@ -30,8 +30,8 @@ export default class Toolbar extends React.Component {
   
   onMouseMove = (e) => {
     this.setState({
-      top: e.clientY - 35,
-      left: e.clientX + 5
+      top: e.clientY - 10,
+      left: e.clientX + 8
     })
   };
   
