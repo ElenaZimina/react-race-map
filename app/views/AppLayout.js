@@ -5,6 +5,7 @@ import actions from '../redux/rootActions'
 import { Header } from '../components/layout/Header'
 import MapContainer from '../components/map/MapContainer'
 import Toolbar from '../components/toolbar/Toolbar'
+import Output from '../components/output/Output';
 
 import '../styles/main.scss'
 
@@ -34,6 +35,10 @@ export class AppLayout extends React.Component {
           <Toolbar
             tools={state.tools}
             onSetActiveTool={actions.setActiveTool}
+          />
+          
+          <Output
+            map={state.map}
           />
           
         </div>
