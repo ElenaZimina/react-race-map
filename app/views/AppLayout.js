@@ -27,7 +27,7 @@ export class AppLayout extends React.Component {
           <MapContainer
             map={state.map}
             activeTool={state.tools.entities[state.tools.activeId]}
-            onAddMarker={actions.addMarker}
+            onSetMarker={actions.setMarker}
           />
           
           <Toolbar

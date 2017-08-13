@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
+// import { icon } from ''
 
 export default class MapContainer extends React.Component {
 
   static propTypes = {
     map: PropTypes.object.isRequired,
-    onAddMarker: PropTypes.func.isRequired,
+    onSetMarker: PropTypes.func.isRequired,
     activeTool: PropTypes.object
   };
   
@@ -14,7 +15,11 @@ export default class MapContainer extends React.Component {
   
   onClick = (e) => {
     if (this.props.activeTool) {
-      console.log(e.latlng)
+      const object = {
+        position: e.latlng,
+        icon: '../'
+      }
+      this.props.onSetMarker(object)
     }
   };
 
