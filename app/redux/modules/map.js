@@ -11,17 +11,29 @@ export const SET_MARKER = 'SET_MARKER';
  * Actions
  * */
 
-export const _setMarker = createAction(SET_MARKER, (object) => object);
+export const _setMarker = createAction(SET_MARKER, (ids, entities) => {
+  return {ids, entities}
+});
 
 export const setMarker = (object) => {
   return (dispatch, getState) => {
-    const ids = getState().map.ids;
-    if (object.id && ids.includes(object.id)) {
-    
+    const state = getState().map;
+    const stateIds = state.ids;
+    const stateEntities = state.entities;
+
+    const marker = {};
+    let id = object.id;
+    if (id && stateIds.includes(id)) {
+
     } else {
-      const id = uuid();
+      id = uuid();
     }
-    dispatch(_setMarker(object));
+    marker[id] = object;
+    marker[id]['id'] = id;
+
+    const ids = stateIds.concat(id);
+    const entities = Object.assign({}, stateEntities, marker)
+    dispatch(_setMarker(ids, entities));
     dispatch(setActiveTool(null));
   }
 }
@@ -44,9 +56,12 @@ export const initialState = {
 export default handleActions({
 
   [SET_MARKER]: (state, {payload}) => {
+    const {ids, entities} = payload
     return {
-      ...state
+      ...state,
+      ids,
+      entities
     };
   }
-  
+
 }, initialState);
