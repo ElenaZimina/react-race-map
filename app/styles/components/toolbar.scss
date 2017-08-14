@@ -1,11 +1,12 @@
 .toolbar {
-  width: 300px;
+  width: 100%;
+  padding: 0 50px;
   height: 250px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   background-color: white;
-  margin-right: 13%;
+  box-sizing: border-box;
 
   &__title {
     width: 100%;
@@ -53,15 +54,19 @@
 
 @keyframes active-tool {
   0% {
-    background-color: #4DBCB6;
+    box-shadow: 0 0 3px 4px #4DBCB6;
   }
 
-  50% {
-    background-color: white;
+  33% {
+    box-shadow: 2px 2px 3px 4px #4DBCB6;
+  }
+
+  66% {
+    box-shadow: 0 0 3px 4px #4DBCB6;
   }
 
   100% {
-    background-color: #4DBCB6;
+    box-shadow: 2px 2px 3px 4px #4DBCB6;
   }
 }
 

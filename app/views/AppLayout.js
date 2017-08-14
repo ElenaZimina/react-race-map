@@ -18,29 +18,30 @@ export class AppLayout extends React.Component {
 
   render () {
     const {state, actions} = this.props;
-    
+
     return (
       <div className='page-container'>
         <Header />
-  
+
         <div className='page-content'>
-        
+
           <MapContainer
             map={state.map}
             activeTool={state.tools.entities[state.tools.activeId]}
             onSetMarker={actions.setMarker}
             onSavePopupText={actions.savePopupText}
           />
-          
-          <Toolbar
-            tools={state.tools}
-            onSetActiveTool={actions.setActiveTool}
-          />
-          
-          <Output
-            map={state.map}
-          />
-          
+
+          <div className='page--right'>
+            <Toolbar
+              tools={state.tools}
+              onSetActiveTool={actions.setActiveTool}
+            />
+
+            <Output
+              map={state.map}
+            />
+          </div>
         </div>
       </div>
     )
