@@ -52,21 +52,21 @@
   }
 }
 
+.tool-title {
+  text-transform: capitalize;
+}
+
 @keyframes active-tool {
   0% {
     box-shadow: 0 0 3px 4px #4DBCB6;
   }
 
-  33% {
-    box-shadow: 2px 2px 3px 4px #4DBCB6;
-  }
-
-  66% {
-    box-shadow: 0 0 3px 4px #4DBCB6;
+  50% {
+    box-shadow: 0 0 3px 2px #4DBCB6;
   }
 
   100% {
-    box-shadow: 2px 2px 3px 4px #4DBCB6;
+    box-shadow: 0 0 3px 4px #4DBCB6;
   }
 }
 

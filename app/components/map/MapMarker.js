@@ -1,18 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Marker, Popup } from 'react-leaflet'
+import { Button } from '../layout/Button'
 import L from 'leaflet'
 import finishIcon from '../../images/finish.svg'
 import startIcon from '../../images/start.svg'
 import waterIcon from '../../images/water.svg'
 import mealsIcon from '../../images/meals.svg'
 import medicineIcon from '../../images/medicine.svg'
+import pencilIcon from '../../images/pencil.svg'
 
 export default class MapMarker extends React.Component {
 
   static propTypes = {
     marker: PropTypes.object.isRequired,
     onSavePopupText: PropTypes.func.isRequired,
+    onDeleteMarker: PropTypes.func.isRequired,
+    onChangeMarkerPosition: PropTypes.func.isRequired,
     activeTool: PropTypes.object
   };
 
@@ -26,7 +30,8 @@ export default class MapMarker extends React.Component {
         meals: mealsIcon,
         medicine: medicineIcon
       },
-      value: ''
+      value: '',
+      isEdit: true
     }
   }
   
@@ -37,15 +42,30 @@ export default class MapMarker extends React.Component {
   };
   
   onSubmit = () => {
-    this.props.onSavePopupText(this.props.marker.id, this.state.value)
-  }
+    this.props.onSavePopupText(this.props.marker.id, this.state.value);
+    this.setState({
+      isEdit: false
+    })
+  };
   
-  onReject = () => {
-    this.props.onSavePopupText(this.props.marker.id, '')
+  onDelete = () => {
+    this.props.onDeleteMarker(this.props.marker.id)
+  };
+  
+  onChangePosition = () => {
+    const {marker} = this.props;
+    this.props.onChangeMarkerPosition(marker.id, marker.tool)
+  };
+  
+  onEdit = () => {
+    this.setState({
+      isEdit: true
+    })
   };
 
   render() {
     const {marker} = this.props;
+    const {isEdit} = this.state;
 
     return (
       <Marker
@@ -57,21 +77,30 @@ export default class MapMarker extends React.Component {
       >
         <Popup minHeight='100'>
           <div>
-            {marker.isEditText &&
-              <div className='popup-content popup-content--edit'>
-                Would you like to add some text to this point?
-                <input
-                  className='popup-input'
-                  value={this.state.value}
-                  onChange={this.onChangeInput}
-                />
-                <button className='popup-submit-btn' onClick={this.onSubmit}>
-                  Submit
-                </button>
+            {isEdit &&
+              <div>
+                <div className='popup-content popup-content--edit'>
+                  Add some text to this point:
+                  <input
+                    className='popup-input'
+                    value={this.state.value}
+                    onChange={this.onChangeInput}
+                  />
+                  <Button onClick={this.onSubmit} text='Submit' type='submit' />
+                </div>
+  
+                <div className='popup__bottom'>
+                  <p>Replace or delete marker:</p>
+                  <Button text='Replace' type='replace' onClick={this.onChangePosition} />
+                  <Button text='Delete' type='delete' onClick={this.onDelete} />
+                </div>
               </div>
             }
-            {!marker.isEditText &&
-              <span>{marker.text}</span>
+            {!isEdit &&
+              <div>
+                <span className='popup__main-text'>{marker.text}</span>
+                <Button icon={pencilIcon} type='edit' onClick={this.onEdit} />
+              </div>
             }
           </div>
         </Popup>

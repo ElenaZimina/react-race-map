@@ -30,25 +30,25 @@ export const initialState = {
   entities: {
     1: {
       id: 1,
-      title: 'Start',
+      title: 'start',
       count: 1
     },
     2: {
       id: 2,
-      title: 'Finish',
+      title: 'finish',
       count: 1
     },
     3: {
       id: 3,
-      title: 'Water'
+      title: 'water'
     },
     4: {
       id: 4,
-      title: 'Medicine'
+      title: 'medicine'
     },
     5: {
       id: 5,
-      title: 'Meals'
+      title: 'meals'
     }
   },
   activeId: null

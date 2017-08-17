@@ -30,6 +30,8 @@ export class AppLayout extends React.Component {
             activeTool={state.tools.entities[state.tools.activeId]}
             onSetMarker={actions.setMarker}
             onSavePopupText={actions.savePopupText}
+            onChangeMarkerPosition={actions.changeMarkerPosition}
+            onDeleteMarker={actions.deleteMarker}
           />
 
           <div className='page--right'>
@@ -37,10 +39,12 @@ export class AppLayout extends React.Component {
               tools={state.tools}
               onSetActiveTool={actions.setActiveTool}
             />
-
-            <Output
-              map={state.map}
-            />
+  
+            {state.map.ids[0] !== undefined &&
+              <Output
+                map={state.map}
+              />
+            }
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ export default class Facility extends React.Component {
     return (
       <div className='facility' onClick={this.onClick}>
         <div className={facilityClasses}>
-          <div className={`tool-icon icon-${tool.title.toLowerCase()}`} />
+          <div className={`tool-icon icon-${tool.title}`} />
         </div>
         <div className='tool-title'>{tool.title}</div>
       </div>

@@ -10,27 +10,31 @@ export default class Output extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      string: ''
+      string: this.createOutput(props)
     }
   }
 
   componentWillReceiveProps (nextProps) {
     if (this.props.map.entities !== nextProps.map.entities) {
-      const arr = [];
-      Object.keys(nextProps.map.entities).forEach(id => {
-        const item = nextProps.map.entities[id];
-        const data = {
-          title: item.title,
-          position: item.position,
-          text: item.text || ''
-        }
-        arr.push(data);
-      })
-
-      const string = JSON.stringify(arr, null, 2);
+      const string = this.createOutput(nextProps);
       this.setState({string: string});
     }
   }
+  
+  createOutput = (props) => {
+    const arr = [];
+    Object.keys(props.map.entities).forEach(id => {
+      const item = props.map.entities[id];
+      const data = {
+        title: item.title,
+        position: item.position,
+        text: item.text || ''
+      };
+      arr.push(data);
+    });
+  
+    return JSON.stringify(arr, null, 2);
+  };
 
   render() {
     const {string} = this.state;

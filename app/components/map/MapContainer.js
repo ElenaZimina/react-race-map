@@ -8,6 +8,8 @@ export default class MapContainer extends React.Component {
     map: PropTypes.object.isRequired,
     onSetMarker: PropTypes.func.isRequired,
     onSavePopupText: PropTypes.func.isRequired,
+    onDeleteMarker: PropTypes.func.isRequired,
+    onChangeMarkerPosition: PropTypes.func.isRequired,
     activeTool: PropTypes.object
   };
 
@@ -19,7 +21,8 @@ export default class MapContainer extends React.Component {
       const object = {
         position: e.latlng,
         icon: '../',
-        title: activeTool.title.toLowerCase(),
+        title: activeTool.title,
+        tool: activeTool.id,
         isEditText: true
       };
       this.props.onSetMarker(object)
@@ -45,6 +48,8 @@ export default class MapContainer extends React.Component {
                 marker={marker}
                 key={`marker-${id}`}
                 onSavePopupText={this.props.onSavePopupText}
+                onDeleteMarker={this.props.onDeleteMarker}
+                onChangeMarkerPosition={this.props.onChangeMarkerPosition}
               />
             )
           })}

@@ -3,18 +3,6 @@
   z-index: 100;
 }
 
-.leaflet-container {
-  width: 600px;
-  height: 400px;
-  position: relative;
-  overflow: hidden;
-  cursor: auto;
-}
-
-.leaflet-popup-content {
-  text-align: center;
-}
-
 .popup-content {
   display: flex;
   flex-direction: column;
@@ -22,8 +10,10 @@
 }
 
 .popup-input {
-  margin: 15px 0;
-  padding: 4px 10px;
+  margin: 8px 0;
+  padding: 5px 10px;
+  width: 170px;
+  box-sizing: border-box;
   font-family: Roboto;
   font-size: 14px;
   border: none;
@@ -31,12 +21,44 @@
   box-shadow: 0 0 3px 1px #4DBCB6;
 }
 
-.popup-submit-btn {
+.popup-button {
   min-width: 40px;
-  color: white;
-  background-color: #009E95;
   font-weight: 600;
   border: none;
-  padding: 7px 15px;
+  padding: 4px 10px;
   border-radius: 4px;
+  margin: 5px;
+  box-sizing: border-box;
+
+  &--submit {
+    color: white;
+    background-color: #009E95;
+  }
+
+  &--delete {
+    color: white;
+    background-color: #FF4C67;
+  }
+
+  &--edit {
+    min-width: 0;
+    margin: 0;
+    padding: 6px;
+    right: 5px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    background-color: transparent;
+    border: 1px solid #009e95;
+  }
+}
+
+.popup__bottom {
+  margin-top: 18px;
+}
+
+.popup__main-text {
+  font-size: 13px;
+  font-weight: 600;
+  word-wrap: break-word;
 }

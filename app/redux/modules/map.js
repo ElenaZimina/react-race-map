@@ -6,6 +6,7 @@ import {setActiveTool} from './tools'
  * Constants
  * */
 export const SET_MARKER = 'SET_MARKER';
+export const DELETE_MARKER = 'DELETE_MARKER';
 export const SAVE_POPUP_TEXT = 'SAVE_POPUP_TEXT';
 
 /*
@@ -37,15 +38,42 @@ export const setMarker = (object) => {
     marker[id]['id'] = id;
 
     const ids = stateIds.concat(id);
-    const entities = Object.assign({}, stateEntities, marker)
+    const entities = Object.assign({}, stateEntities, marker);
     dispatch(_setMarker(ids, entities));
     dispatch(setActiveTool(null));
   }
-}
+};
+
+export const _deleteMarker = createAction(DELETE_MARKER, (ids, entities) => {
+  return {ids, entities}
+});
+
+export const deleteMarker = (id) => {
+  return (dispatch, getState) => {
+    const state = getState().map;
+    const stateIds = state.ids;
+    const stateEntities = state.entities;
+    const markerIndex = stateIds.indexOf(id);
+
+    const ids = [...stateIds.slice(0, markerIndex), ...stateIds.slice(markerIndex + 1)];
+    const entities = Object.assign({}, stateEntities);
+    delete entities[id];
+    dispatch(_deleteMarker(ids, entities));
+  }
+};
+
+export const changeMarkerPosition = (id, tool) => {
+  return (dispatch) => {
+    dispatch(deleteMarker(id));
+    dispatch(setActiveTool(tool));
+  }
+};
 
 export const actions = {
   setMarker,
-  savePopupText
+  savePopupText,
+  deleteMarker,
+  changeMarkerPosition
 };
 
 /*
@@ -62,6 +90,15 @@ export const initialState = {
 export default handleActions({
 
   [SET_MARKER]: (state, {payload}) => {
+    const {ids, entities} = payload;
+    return {
+      ...state,
+      ids,
+      entities
+    };
+  },
+  
+  [DELETE_MARKER]: (state, {payload}) => {
     const {ids, entities} = payload;
     return {
       ...state,
