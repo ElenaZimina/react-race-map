@@ -43,8 +43,7 @@ else {
       compress: {
         unused: true,
         dead_code: true
-      },
-      sourceMap: true
+      }
     }),
     new ExtractTextPlugin('[name].css')
   ]);

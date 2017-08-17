@@ -30,12 +30,12 @@ let webpackConfig = {
 if (process.env.NODE_ENV === 'production') {
   webpackConfig.plugins.push(
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         unused: true,
         dead_code: true
-      }
+      },
+      sourceMap: true
     })
   )
 }

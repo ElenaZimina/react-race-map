@@ -7,13 +7,9 @@ const isProduction = config.env === 'production';
 // ------------------------------------
 // Rules
 // ------------------------------------
-const extractSass = new ExtractTextPlugin({
-  filename: '[name].css',
-  disable: !isProduction
-});
 
 let sassLoaders = isProduction
-  ? extractSass.extract({
+  ? ExtractTextPlugin.extract({
     fallback: 'style-loader',
     use: [{
       loader: 'css-loader',
@@ -169,14 +165,17 @@ export let rules = [
   },
   // Fonts
   {
-    test: /\.(eot|svg|ttf|woff|woff2)$/,
+    test: /\.(eot|ttf|woff|woff2)$/,
     use: {
-      loader: 'file-loader'
+      loader: 'file-loader',
+      options: {
+        name: 'fonts/[name].[ext]'
+      }
     }
   },
   // Images
   {
-    test: /\.(png|jpg|gif)$/,
+    test: /\.(png|jpg|gif|svg)$/,
     use: {
       loader: 'file-loader',
       options: {
