@@ -1,5 +1,5 @@
 # React-race-map
-This is the front-end of the playground web app that will become a useful tool for race organizers in one day.
+This is the front-end of the playground web app that will become a useful tool for race organizers in one day, I hope.
 It is possible to create a live race map with necessary facilities such as medical points, water stations, etc.
 
 Front-end is built using Leaflet, React and Redux libraries.
