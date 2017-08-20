@@ -7,11 +7,11 @@
     "npm": "^3.0.0"
   },
   "scripts": {
-    "clean": "rm -rf web/dist",
+    "clean": "rm -rf dist",
     "start": "npm run dll && babel-node webpack/webpack.dev-server.js",
     "dll": "babel-node webpack/webpack.dll.js",
     "dll_prod": "cross-env NODE_ENV=production npm run dll",
-    "build": "npm run clean && npm run dll_prod && cross-env NODE_ENV=production babel-node webpack/webpack.compiler.js"
+    "build": "npm run dll_prod && cross-env NODE_ENV=production babel-node webpack/webpack.compiler.js"
   },
   "repository": {
     "type": "git",
