@@ -6,7 +6,7 @@ Front-end is built using Leaflet, React and Redux libraries.
 
 ### Demo
 
-See a [live demo](https://elenazimina.github.io/), or run:
+See a [live demo](https://react-race-map.herokuapp.com), or run:
 
 ```bash
 git clone https://github.com/ElenaZimina/react-race-map.git
