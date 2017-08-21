@@ -41,20 +41,24 @@
   }
 
   &--edit {
-    min-width: 0;
+    width: 32px;
+    min-width: 32px;
     margin: 0;
     padding: 6px;
-    right: 5px;
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
     background-color: transparent;
     border: 1px solid #009e95;
+    align-self: flex-end;
   }
 }
 
 .popup__bottom {
   margin-top: 18px;
+}
+
+.popup__main {
+  width: 170px;
+  display: flex;
+  flex-direction: column;
 }
 
 .popup__main-text {

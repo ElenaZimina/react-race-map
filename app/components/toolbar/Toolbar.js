@@ -9,7 +9,7 @@ export default class Toolbar extends React.Component {
     tools: PropTypes.object.isRequired,
     onSetActiveTool: PropTypes.func.isRequired
   };
-  
+
   constructor (props) {
     super(props);
     this.state = {
@@ -17,24 +17,24 @@ export default class Toolbar extends React.Component {
       left: 0
     }
   }
-  
+
   componentDidMount () {
     window.addEventListener('mousemove', this.onMouseMove)
     window.addEventListener('keydown', this.onKeyDown)
   }
-  
+
   componentWillUnmount () {
     window.removeEventListener('mousemove', this.onMouseMove)
     window.removeEventListener('keydown', this.onKeyDown)
   }
-  
+
   onMouseMove = (e) => {
     this.setState({
       top: e.clientY - 10,
       left: e.clientX + 8
     })
   };
-  
+
   onKeyDown = (e) => {
     if (e.keyCode === 27) {
       this.props.onSetActiveTool(null)
@@ -47,19 +47,19 @@ export default class Toolbar extends React.Component {
       top: this.state.top + 'px',
       left: this.state.left + 'px'
     };
-    
+
     const title = tools.activeId ? tools.entities[tools.activeId].title.toLowerCase() : '';
-    
+
     const cursorClasses = classnames('cursor-icon', `icon-${title}`);
-  
+
     return (
       <div className='toolbar'>
-        <div className="toolbar__title">Click on facility and set in on map</div>
+        <div className="toolbar__title">Click on the facility and set on the map</div>
         {
           tools.ids.map(id => {
             const tool = tools.entities[id];
             const isActive = id === tools.activeId;
-            
+
             return (
               <Facility
                 key={`facility-${id}`}
@@ -70,7 +70,7 @@ export default class Toolbar extends React.Component {
             )
           })
         }
-  
+
         {
           tools.activeId !== null &&
             <div className={cursorClasses} style={cursorStyle} />

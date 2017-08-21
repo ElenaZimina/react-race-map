@@ -34,29 +34,29 @@ export default class MapMarker extends React.Component {
       isEdit: true
     }
   }
-  
+
   onChangeInput = (e) => {
     this.setState({
       value: e.target.value
     })
   };
-  
+
   onSubmit = () => {
     this.props.onSavePopupText(this.props.marker.id, this.state.value);
     this.setState({
       isEdit: false
     })
   };
-  
+
   onDelete = () => {
     this.props.onDeleteMarker(this.props.marker.id)
   };
-  
+
   onChangePosition = () => {
     const {marker} = this.props;
     this.props.onChangeMarkerPosition(marker.id, marker.tool)
   };
-  
+
   onEdit = () => {
     this.setState({
       isEdit: true
@@ -88,7 +88,7 @@ export default class MapMarker extends React.Component {
                   />
                   <Button onClick={this.onSubmit} text='Submit' type='submit' />
                 </div>
-  
+
                 <div className='popup__bottom'>
                   <p>Replace or delete marker:</p>
                   <Button text='Replace' type='replace' onClick={this.onChangePosition} />
@@ -97,7 +97,7 @@ export default class MapMarker extends React.Component {
               </div>
             }
             {!isEdit &&
-              <div>
+              <div className='popup__main'>
                 <span className='popup__main-text'>{marker.text}</span>
                 <Button icon={pencilIcon} type='edit' onClick={this.onEdit} />
               </div>
